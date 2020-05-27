@@ -1,0 +1,15 @@
+{
+    "name": "whenisthenextspacexlaunch.com",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.html",
+    "scripts": {
+        "deploy": "gh-pages -d dist"
+    },
+    "author": "",
+    "homepage": "https://github.com/warwickofthegh/whenisthenextspacexlaunch.com",
+    "license": "ISC",
+    "dependencies": {
+        "gh-pages": "^1.2.0"
+    }
+}

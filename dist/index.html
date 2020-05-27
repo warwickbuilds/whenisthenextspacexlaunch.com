@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123153435-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-123153435-3');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>whenisthenextspacexlaunch.com</title>
+</head>
+
+<body>
+    <section class="showcase">
+        <div class="image-container">
+            <div class="image"></div>
+
+        </div>
+        <div class="launch-container">
+            <div class="launch-top">
+                <div class="launch-stats">
+                    <div class="launch-countdown">
+                        <div class="countdown-top">
+                            <div class="countdown-days"><span class="days"></span></div>
+                            <div class="countdown-hours"><span class="hours"></span></div>
+                            <div class="countdown-minutes"></div>
+                            <div class="countdown-seconds"></div>
+                        </div>
+                        <div class="countdown-bottom">
+                            <div>DAYS</div>
+                            <div>HOURS</div>
+                            <div>MINS</div>
+                            <div>SECS</div>
+                        </div>
+                        </h1>
+                    </div>
+                </div>
+                <div class="launch-image"></div>
+            </div>
+            <div class="launch-details"></div>
+        </div>
+        <div class="down-arrow"><i class="fas fa-chevron-down white"></i></div>
+
+    </section>
+
+    <section class="upcoming">
+        <table class="launches-list">
+            <thead>
+                <tr>
+                    <th id="patchheader">Patch</th>
+                    <th>Mission Name</th>
+                    <th>Launch Site</th>
+                    <th>Rocket</th>
+                    <th>Payload</th>
+                    <th>Orbit</th>
+                    <th>Customer</th>
+                    <th>Target Launch Time (Your)</th>
+                </tr>
+            </thead>
+            <tbody id="launch-list"></tbody>
+        </table>
+    </section>
+
+    <section class="about">
+        <div class="links-left">
+
+        </div>
+        <div class="links-right">
+            <a href="https://github.com/warwickofthegh/whenisthenextspacexlaunch.com" target="_blank"><img
+                    id="logo-awarddigital" src="img/awarddigital-logo_black.png" alt="Award Digital"></a>
+        </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+    <script src="storage.js"></script>
+    <script src="ui.js"></script>
+    <script src="http.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
