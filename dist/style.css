@@ -288,4 +288,8 @@ h1 {
     .launch-countdown {
         width: 100%;
     }
+
+    .mobile-hide {
+        display: none;
+    }
 }

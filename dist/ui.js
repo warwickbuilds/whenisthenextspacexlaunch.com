@@ -51,11 +51,11 @@ class UI {
 
         // insert nasa link if available
         if (item.links.presskit) {
-            detailsHtml += `<a href="${item.links.presskit}" target="_blank"><img class="nasa"src="/img/nasa-logo-trans.png"></a>`
+            detailsHtml += `<a href="${item.links.presskit}" target="_blank"><img class="nasa"src="img/nasa-logo-trans.png"></a>`
         }
 
         // insert spacex link
-        detailsHtml += `<a href="https://www.spacex.com/" target="_blank"><img class="spacex" src="/img/spacex-logo-trans.png"></a>`
+        detailsHtml += `<a href="https://www.spacex.com/" target="_blank"><img class="spacex" src="img/spacex-logo-trans.png"></a>`
 
         detailsHtml += `</p>`;
 
@@ -116,11 +116,11 @@ class UI {
         row.innerHTML = `
             <td id="patchtd">${patchLink}</td>
             <td>${launch.mission_name}</td>
-            <td>${launch.launch_site.site_name}</td>
+            <td class="mobile-hide">${launch.launch_site.site_name}</td>
             <td>${launch.rocket.rocket_name}</td>
-            <td>${launch.rocket.second_stage.payloads[0].payload_type}</td>
-            <td>${launch.rocket.second_stage.payloads[0].orbit}</td>
-            <td>${launch.rocket.second_stage.payloads[0].customers[0]}</td>
+            <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].payload_type}</td>
+            <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].orbit}</td>
+            <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].customers[0]}</td>
             <td>${moment(launch.launch_date_local).format('llll')}</td>
         `;
         list.append(row);
