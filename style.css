@@ -116,7 +116,7 @@ h1 {
 }
 
 .launch-stats {
-    flex: 75%;
+    flex: 65%;
     text-align: left;
 }
 
@@ -125,7 +125,11 @@ h1 {
 }
 
 .launch-image {
-    flex: 25%;
+    flex: 35%;
+}
+
+.launch-image img {
+    width:100%;
 }
 
 .launch-details {
