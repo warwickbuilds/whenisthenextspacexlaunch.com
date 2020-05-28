@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Chevron click smoothscroll
-document.querySelector('.fa-chevron-down').addEventListener('click', () => {
+document.querySelector('.down-arrow').addEventListener('click', () => {
     ui.smoothScroll('.upcoming', 1000);
 });
 
@@ -27,7 +27,7 @@ function getNextLaunch() {
     http.get('https://api.spacexdata.com/v3/launches/next')
         .then(response => {
             //log response 
-            console.log(response);
+            //console.log(response);
 
             // Add launch details to UI
             ui.paintNextLaunchDetails(response);
@@ -46,7 +46,7 @@ function getUpcomingLaunches() {
             //log response
             //console.log(response);
             response.forEach(element => {
-                console.log(element);
+                //console.log(element);
 
                 // Add launch to list
                 ui.addUpcomingLaunchToList(element);
