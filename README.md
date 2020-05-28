@@ -12,7 +12,7 @@
 
 * Fonts: Google Fonts: Open Sans
 
-#### Design
+#### Design & Development
 
 Full Page Image inspiration from Brad Traversy: https://www.youtube.com/watch?v=Gx_7GQtSdpc
 Ken Burns Effect - https://www.youtube.com/watch?v=XiEiVZFUfa8
@@ -21,9 +21,30 @@ Page Scrolling -  https://www.youtube.com/watch?v=oUSvlrDTLi4
 Easing - http://gizma.com/easing/
 Font-Awesome - https://cdnjs.com/libraries/font-awesome
 Google-Font - 
+https://htmlhead.dev/
 
-#### Hosting 
-Hosted on github pages with a custom url
+Optimisation Tools
+TinyPNG.com - 
+
+#### Hosting & Deployment
+
+* Hosting: GitHub Pages w/ custom URL
+* Domain Register: Namecheap
+* Analytics: Google Analytics - https://analytics.google.com/analytics
+
+Optimisation Testing
+* Search: Google Search Console, URL Inspection, Index Report - https://search.google.com/search-console
+* Google URL Inspection Tool - https://support.google.com/webmasters
+* Google Page Speed Insights - https://developers.google.com/speed
+* Google Lighthouse (Web page quality tester)- https://developers.google.com/web/tools/lighthouse/
+* Mobile Friendly Test - https://search.google.com/test/mobile-friendly
+* Web Page Test - https://www.webpagetest.org/
+* Pingdom Website Speed Test - https://tools.pingdom.com/
+
+Promotion
+* SpaceX Data App List - 
+* Reddit /r/spacex - 
+*
 
 ## Deploy
 
@@ -52,11 +73,13 @@ npm run deploy
   * Style from style.css
   * Single Page from index.html
   * JavaScript to fetch and push items into DOM in app.js 
-  * Google Analytics Tag
   * PWA Compatibility
   * Social header tag
   * Additional Header tags
   * Icons
+  * apple touch icons
+  * favicon
+  * no js
   
 * Testing
   * Lighthouse
@@ -67,9 +90,25 @@ npm run deploy
   * Switch to using GraphQL API 
   * Switch to a framework Vue or React
 
-#### Version 0.1
+#### Version 1.0
 
-Features
+* Features
+  * Mobile optimisted layout
+  * Header meta tags
+
+* Fixes
+  * AD Logo clarity
+
+#### Version 1.0
+
+* Features
+  * SpaceX API Data for Next Launch
+  * SpaceX API Data for upcoming launches
+  * Deployment to gh-pages
+  * Custom URL https://whenisthenextspacexlaunch.com
+
+
+* Fixes
 
 ## References
 

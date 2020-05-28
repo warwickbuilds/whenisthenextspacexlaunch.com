@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123153435-3"></script>
     <script>
@@ -14,29 +16,45 @@
 
         gtag('config', 'UA-123153435-3');
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>whenisthenextspacexlaunch.com</title>
+    <meta name="description" content="Free Web tutorials">
+    <meta name="keywords" content="HTML, CSS, XML, JavaScript">
+    <meta name="author" content="John Doe">
+    <meta property="og:image" content="https://whenisthenextspacexlaunch.com/img/awarddigital-logo_black.png">
+    <meta property="og:description" content="If you want to know when is the next SpaceX launch of a rocket into space this is the site.
+    Next launch detailed along with the target dates for all upcoming launches.">
+    <meta property="og:title" content="When is the next SpaceX Launch">
+    <meta name="twitter:title" content="When is the next SpaceX Launch">
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+    <noscript>
+        <!-- No JS alternative -->
+    </noscript>
 </head>
 
 <body>
+    <header>
+        <h1>when is the next spacex launch</h1>
+    </header>
     <section class="showcase">
         <div class="image-container">
             <div class="image"></div>
-
         </div>
         <div class="launch-container">
             <div class="launch-top">
                 <div class="launch-stats">
                     <div class="launch-countdown">
                         <div class="countdown-top">
+                            <div class="countdown-tminus">T-</div>
                             <div class="countdown-days"><span class="days"></span></div>
                             <div class="countdown-hours"><span class="hours"></span></div>
                             <div class="countdown-minutes"></div>
                             <div class="countdown-seconds"></div>
                         </div>
                         <div class="countdown-bottom">
+                            <div></div>
                             <div>DAYS</div>
                             <div>HOURS</div>
                             <div>MINS</div>
@@ -58,13 +76,13 @@
             <thead>
                 <tr>
                     <th id="patchheader">Patch</th>
-                    <th>Mission Name</th>
+                    <th>Mission</th>
                     <th class="mobile-hide">Launch Site</th>
-                    <th>Rocket</th>
+                    <th class="mobile-hide">Rocket</th>
                     <th class="mobile-hide">Payload</th>
                     <th class="mobile-hide">Orbit</th>
                     <th class="mobile-hide">Customer</th>
-                    <th>Target Launch Time (Your)</th>
+                    <th class="mobile-hide">Target Launch Time (Your)</th>
                 </tr>
             </thead>
             <tbody id="launch-list"></tbody>
@@ -81,8 +99,6 @@
         </div>
 
     </section>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
     <script src="storage.js"></script>
     <script src="ui.js"></script>
     <script src="http.js"></script>

@@ -115,13 +115,19 @@ class UI {
 
         row.innerHTML = `
             <td id="patchtd">${patchLink}</td>
-            <td>${launch.mission_name}</td>
+            <td>
+                ${launch.mission_name}
+                <p class=mobile-show>
+                ${launch.rocket.rocket_name} | ${launch.rocket.second_stage.payloads[0].payload_type}<br>
+                ${moment(launch.launch_date_local).format('llll')}<br>
+                </p>
+            </td>
             <td class="mobile-hide">${launch.launch_site.site_name}</td>
-            <td>${launch.rocket.rocket_name}</td>
+            <td class="mobile-hide">${launch.rocket.rocket_name}</td>
             <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].payload_type}</td>
             <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].orbit}</td>
             <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].customers[0]}</td>
-            <td>${moment(launch.launch_date_local).format('llll')}</td>
+            <td class="mobile-hide">${moment(launch.launch_date_local).format('llll')}</td>
         `;
         list.append(row);
     }
