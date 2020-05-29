@@ -12,6 +12,8 @@
 
 * Fonts: Google Fonts: Open Sans
 
+* Browser Support: Any Modern Browser (not Internet Explorer at all)
+
 #### Design & Development
 
 Full Page Image inspiration from Brad Traversy: https://www.youtube.com/watch?v=Gx_7GQtSdpc
@@ -22,6 +24,9 @@ Easing - http://gizma.com/easing/
 Font-Awesome - https://cdnjs.com/libraries/font-awesome
 Google-Font - 
 https://htmlhead.dev/
+Sitemaps - https://ahrefs.com/blog/how-to-create-a-sitemap/
+robots.txt - https://moz.com/learn/seo/robotstxt
+noscript - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
 
 Optimisation Tools
 TinyPNG.com - 
@@ -90,7 +95,19 @@ npm run deploy
   * Switch to using GraphQL API 
   * Switch to a framework Vue or React
 
-#### Version 1.0
+#### Version 1.2
+
+* Features
+  * Sitemap.xml
+  * robots.txt
+  * Scrollbar styling
+  * Noscript notice
+
+* Fixes
+  * Keywords
+  * Single SpaceX-API call rather than 2 as upcoming also contains next launch
+
+#### Version 1.1
 
 * Features
   * Mobile optimisted layout
@@ -106,9 +123,6 @@ npm run deploy
   * SpaceX API Data for upcoming launches
   * Deployment to gh-pages
   * Custom URL https://whenisthenextspacexlaunch.com
-
-
-* Fixes
 
 ## References
 
