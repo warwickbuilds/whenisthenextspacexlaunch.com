@@ -1,5 +1,7 @@
 # whenisthenextspacexlaunch.com
 
+Development Repo and Documentation for <a href="https://whenisthenextspacexlaunch.com" target="_blank" alt="spacex launch">When is the next SpaceX launch</a>
+
 ## Development
 
 #### Code
@@ -27,6 +29,12 @@ https://htmlhead.dev/
 Sitemaps - https://ahrefs.com/blog/how-to-create-a-sitemap/
 robots.txt - https://moz.com/learn/seo/robotstxt
 noscript - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
+Favicon Generator - https://realfavicongenerator.net/
+Browser Configuration Schema - https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/dn320426(v=vs.85)
+Apple Web Applications - https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
+Google Browser Configuration - https://developers.google.com/web/fundamentals/design-and-ux/browser-customization
+PWA Setup - https://codelabs.developers.google.com/codelabs/your-first-pwapp/#5
+https://medium.com/dev-channel/learn-how-to-build-a-pwa-in-under-5-minutes-c860ad406ed
 
 Optimisation Tools
 TinyPNG.com - 
@@ -37,19 +45,23 @@ TinyPNG.com -
 * Domain Register: Namecheap
 * Analytics: Google Analytics - https://analytics.google.com/analytics
 
-Optimisation Testing
-* Search: Google Search Console, URL Inspection, Index Report - https://search.google.com/search-console
-* Google URL Inspection Tool - https://support.google.com/webmasters
-* Google Page Speed Insights - https://developers.google.com/speed
-* Google Lighthouse (Web page quality tester)- https://developers.google.com/web/tools/lighthouse/
-* Mobile Friendly Test - https://search.google.com/test/mobile-friendly
-* Web Page Test - https://www.webpagetest.org/
-* Pingdom Website Speed Test - https://tools.pingdom.com/
+* Optimisation Testing
+  * Search: Google Search Console, URL Inspection, Index Report - https://search.google.com/search-console
+  * Google URL Inspection Tool - https://support.google.com/webmasters
+  * Google Page Speed Insights - https://developers.google.com/speed
+  * Google Lighthouse (Web page quality tester)- https://developers.google.com/web/tools/lighthouse/
+  * Mobile Friendly Test - https://search.google.com/test/mobile-friendly
+  * Web Page Test - https://www.webpagetest.org/
+  * Pingdom Website Speed Test - https://tools.pingdom.com/
+  * SS Labs
+  * Site checker
 
-Promotion
-* SpaceX Data App List - 
-* Reddit /r/spacex - 
-*
+* Promotion
+  * SpaceX Data App List - 
+  * Reddit /r/spacexlounge - 
+  * Reddit /r/webdev - 
+  * Youtube, Instagram and Facebook Comments
+  * Whirlpool Thread - https://forums.whirlpool.net.au/thread/97m0xpm9
 
 ## Deploy
 
@@ -71,20 +83,9 @@ npm run deploy
 ## Releases
 
 * Planned Featues
-  * Graph API for spacexapi
-  * Local store use 
+  * Local storage
   * Only poll api if updates or per period
-  * Items pulled from data.json
-  * Style from style.css
-  * Single Page from index.html
-  * JavaScript to fetch and push items into DOM in app.js 
-  * PWA Compatibility
-  * Social header tag
-  * Additional Header tags
-  * Icons
-  * apple touch icons
-  * favicon
-  * no js
+  * PWA Compatibility and Configuration
   
 * Testing
   * Lighthouse
@@ -94,6 +95,17 @@ npm run deploy
 * Version 2 Major Upgrade
   * Switch to using GraphQL API 
   * Switch to a framework Vue or React
+
+#### Version 1.3
+
+* Features
+  * Favicons
+    * Chrome
+    * Apple
+    * Windows Pinned Site (Browser Configuration)
+    * Favicon
+  * Facebook Metadata
+  * Start of PWA Configuration
 
 #### Version 1.2
 

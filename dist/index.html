@@ -16,28 +16,44 @@
 
         gtag('config', 'UA-123153435-3');
     </script>
-    <title>when is the next spacex launch</title>
-    <meta name="description" content="Latest details on the upcoming SpaceX rocket launch to space!">
+    <title>When is the next SpaceX launch</title>
+    <meta name="description"
+        content="View the latest details and launch time for the upcoming SpaceX rocket launch to space!">
     <meta name="keywords"
-        content="SpaceX, Launch, Rocket, Falcon 9, Starship, BFR, Falcom Heavy, SuperHeavy, Dragon, Dragon Crew, IIS, Nasa, LEO, Moon, Mars,">
+        content="SpaceX, Launch, spacex launch, Rocket, Falcon 9, Starship, BFR, Falcom Heavy, SuperHeavy, Dragon, Dragon Crew, IIS, Nasa, LEO, Moon, Mars,">
     <meta name="author" content="Award Digital - Warwick Ward">
-    <meta property="og:image" content="https://whenisthenextspacexlaunch.com/img/awarddigital-logo_black.png">
+    <meta property="og:image" content="https://whenisthenextspacexlaunch.com/facebook-share.png">
+    <meta property="og:url" content="https://whenisthenextspacexlaunch.com">
     <meta property="og:description" content="If you want to know when is the next SpaceX launch of a rocket into space this is the site.
     Next launch detailed along with the target dates for all upcoming launches">
     <meta property="og:title" content="When is the next SpaceX Launch">
+    <meta property="og:type" content="website">
     <meta name="twitter:title" content="When is the next SpaceX Launch">
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=eEvNOAdjm7">
+    <link rel="apple-touch-startup-image" href="icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=eEvNOAdjm7">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=eEvNOAdjm7">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=eEvNOAdjm7">
+    <link rel="manifest" href="manifest.json?v=eEvNOAdjm7">
+    <link rel="mask-icon" href="safari-pinned-tab.svg?v=eEvNOAdjm7" color="#5bbad5">
+    <link rel="shortcut icon" href="favicon.ico?v=eEvNOAdjm7">
+    <meta name="apple-mobile-web-app-title" content="X Launch">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="when is the next spacex launch">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="mstile-144x144.png?v=eEvNOAdjm7">
+    <meta name="msapplication-config" content="browserconfig.xml" />
+    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-    <noscript>
-        <!-- No JS alternative -->
-    </noscript>
 </head>
 
 <body>
+
     <header>
-        <h1>when is the next spacex launch</h1>
+        <h1>When is the next SpaceX launch</h1>
     </header>
     <section class="showcase">
         <div class="image-container">
@@ -69,7 +85,6 @@
             <div class="launch-details"></div>
         </div>
         <div class="down-arrow"><i class="fas fa-chevron-down white"></i></div>
-
     </section>
 
     <section class="upcoming">
@@ -92,18 +107,38 @@
 
     <section class="about">
         <div class="links-left">
-
         </div>
         <div class="links-right">
             <a href="https://github.com/warwickofthegh/whenisthenextspacexlaunch.com" target="_blank"><img
                     id="logo-awarddigital" src="img/awarddigital-logo_black.png" alt="Award Digital"></a>
         </div>
-
     </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
     <script src="storage.js"></script>
     <script src="ui.js"></script>
     <script src="http.js"></script>
     <script src="app.js"></script>
+
+    <!-- PWA Setup with service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration
+                        .scope);
+                }, function (err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                }).catch(function (err) {
+                    console.log(err)
+                });
+            });
+        } else {
+            console.log('service worker is not supported');
+        }
+    </script>
 </body>
 
 </html>
