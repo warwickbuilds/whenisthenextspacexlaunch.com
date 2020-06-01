@@ -55,6 +55,7 @@ TinyPNG.com -
   * Pingdom Website Speed Test - https://tools.pingdom.com/
   * SS Labs
   * Site checker
+  * Facebook Sharing Debugger - https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fwhenisthenextspacexlaunch.com%2F
 
 * Promotion
   * SpaceX Data App List - 
@@ -86,6 +87,8 @@ npm run deploy
   * Local storage
   * Only poll api if updates or per period
   * PWA Compatibility and Configuration
+  * Update AD Logo to text to allow for dark mode
+  * Use flickr image from response if avilable
   
 * Testing
   * Lighthouse
@@ -95,6 +98,16 @@ npm run deploy
 * Version 2 Major Upgrade
   * Switch to using GraphQL API 
   * Switch to a framework Vue or React
+
+#### Version 1.4
+
+* Features
+  * No launch image use a local default
+  * System detected dark mode
+  * No patch available placeholder
+
+* Fixes
+  * Missing Mission details check (hide)
 
 #### Version 1.3
 
@@ -106,6 +119,7 @@ npm run deploy
     * Favicon
   * Facebook Metadata
   * Start of PWA Configuration
+    * Install as App in Windows
 
 #### Version 1.2
 
