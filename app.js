@@ -3,7 +3,7 @@ const storage = new Storage();
 const ui = new UI();
 const http = new HTTP();
 
-// Get Weather on DOM Loan
+// DOM Load Event
 document.addEventListener('DOMContentLoaded', () => {
     //getNextLaunch();
     getUpcomingLaunches();
@@ -16,9 +16,12 @@ document.querySelector('.down-arrow').addEventListener('click', () => {
 
 // Get upcoming launches
 function getUpcomingLaunches() {
-    // call http apo
+    // call http api
     http.get('https://api.spacexdata.com/v3/launches/upcoming')
         .then(response => {
+
+            // Console Log response
+            console.log(response);
 
             // Add next launch details to UI
             ui.paintNextLaunchDetails(response[0]);

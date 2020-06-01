@@ -33,7 +33,11 @@ class UI {
 
         let detailsHtml = '';
 
-        detailsHtml += `${item.details}`;
+        // check for detail available
+        detailsHtml += (item.details === null) ?
+            "" :
+            item.details;
+
         detailsHtml += `<p>`;
         // insert video link if available
         if (item.links.video_link) {
@@ -111,7 +115,7 @@ class UI {
         // check to patch
         const patchLink = (launch.links.mission_patch_small) ?
             `<img src="${launch.links.mission_patch_small}">` :
-            `<i class="fas fa-circle patch"></i>`;
+            `<img src="img/nopatch-60x60.png">`;
 
         row.innerHTML = `
             <td id="patchtd">${patchLink}</td>
