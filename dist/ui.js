@@ -7,7 +7,10 @@ class UI {
         const imageDiv = document.querySelector('.launch-image');
 
         // set launch image
-        imageDiv.innerHTML = `<img src="${item.links.mission_patch_small}">`;
+        const patchLink = (item.links.mission_patch_small)
+            ? item.links.mission_patch_small
+            : "img/nopatch-120x120.png";
+        imageDiv.innerHTML = `<img src="${patchLink}">`;
         const div = document.createElement('div');
         div.innerHTML = `
             <p>
