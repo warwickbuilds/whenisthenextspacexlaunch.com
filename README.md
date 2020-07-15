@@ -102,9 +102,8 @@ npm run deploy
 #### Version 1.4
 
 * Features
-  * No launch image use a local default
-  * System detected dark mode
-  * No patch available placeholder
+  * Dark Mode, System detected
+  * No patch available use a placeholder
 
 * Fixes
   * Missing Mission details check (hide)
