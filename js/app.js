@@ -9,22 +9,41 @@ document.addEventListener('DOMContentLoaded', () => {
   getUpcomingLaunches();
 
   // Get Saved theme from LocalStorage and apply
-  const savedTheme = localStorage.getItem('witnsl-theme') || 'auto';
-  applyTheme(savedTheme);
-  // set selection to saved option
-  for (const optionElement of document.querySelectorAll('#theme option')) {
-    optionElement.selected = savedTheme === optionElement.value;
+  const savedTheme = localStorage.getItem('witnsl-theme');
+  if (savedTheme === null) {
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      // dark system mode
+      savedTheme = 'dark';
+    } else {
+      // light system mode
+      savedTheme = 'light';
+    }
   }
-
-  document.querySelector('#theme').addEventListener('change', function () {
-    localStorage.setItem('witnsl-theme', this.value);
-    applyTheme(this.value);
-  });
+  // apply saved mode, or system mode
+  applyTheme(savedTheme);
+  // set mode selector to current value
+  if (savedTheme === 'light') {
+    document.querySelector('.theme-checkbox').checked = true;
+  }
 });
 
 // Chevron click smoothscroll
 document.querySelector('.down-arrow').addEventListener('click', () => {
   ui.smoothScroll('.upcoming', 1000);
+});
+
+// Dark Mode selector
+document.querySelector('.theme-checkbox').addEventListener('change', (e) => {
+  if (e.srcElement.checked === true) {
+    localStorage.setItem('witnsl-theme', 'light');
+    applyTheme('light');
+  } else {
+    localStorage.setItem('witnsl-theme', 'dark');
+    applyTheme('dark');
+  }
 });
 
 // Get upcoming launches
@@ -51,7 +70,8 @@ function getUpcomingLaunches() {
     .catch((err) => console.log(err));
 }
 
+// Apply theme change classes to body on change
 function applyTheme(theme) {
-  document.body.classList.remove('theme-auto', 'theme-light', 'theme-dark');
+  document.body.classList.remove('theme-light', 'theme-dark');
   document.body.classList.add(`theme-${theme}`);
 }

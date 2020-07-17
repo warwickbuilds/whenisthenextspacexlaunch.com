@@ -14,14 +14,6 @@
   --thumbBG: rgb(63, 63, 63);
 }
 
-/* Detect system dark mode setting */
-@media (prefers-color-scheme: dark) {
-  body.theme-auto {
-    --foreground: var(--clr-light);
-    --background: var(--clr-dark);
-  }
-}
-
 body.theme-dark {
   --foreground: var(--clr-light);
   --background: var(--clr-dark);
@@ -44,7 +36,7 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: 'Open Sans', sans-serif;
   line-height: 1.5;
@@ -52,6 +44,7 @@ body {
   letter-spacing: 1px;
   scrollbar-width: thin;
   scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  transition: background 0.5s linear;
 }
 
 body::-webkit-scrollbar {
@@ -103,7 +96,7 @@ header {
   height: 100%;
   overflow: hidden;
   /* low res before large loads */
-  background: var(--background) url('img/day_dragon.jpg') no-repeat center
+  background: var(--background) url('../img/day_dragon.jpg') no-repeat center
     center/cover;
 }
 
@@ -113,7 +106,7 @@ header {
   object-fit: cover;
   position: absolute;
   overflow: hidden;
-  background: url('img/day_dragon.jpg') no-repeat center center/cover;
+  background: url('../img/day_dragon.jpg') no-repeat center center/cover;
   top: 0;
   left: 0;
   /* transform: translate(-50%, -50%); */
@@ -231,7 +224,7 @@ header {
 }
 
 .launch-countdown {
-  width: 250px;
+  width: 350px;
   border: 1px solid white;
   margin-bottom: 10px;
 }
@@ -256,18 +249,21 @@ header {
   background: white;
   color: rgba(0, 0, 0, 1);
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .about {
-  padding: 40px;
-  text-align: center;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  line-height: 0.9;
 }
 
-.about p {
+/* .about p {
   font-size: 1.2rem;
   max-width: 600px;
   margin: auto;
-}
+} */
 
 .red {
   color: #ff0000;
@@ -310,16 +306,11 @@ header {
 }
 
 .launches-list img {
-  width: 60px;
-}
-
-.launches-list thead {
-  font-size: 1.2rem;
+  width: 40px;
 }
 
 #patchheader {
   text-align: center;
-  min-width: 100px;
 }
 
 #patchtd {
@@ -339,14 +330,6 @@ header {
   display: none;
 }
 
-.links-left {
-  float: right;
-}
-
-.links-right {
-  line-height: 0.9;
-}
-
 #logo-award,
 #logo-digital {
   font-family: Michroma;
@@ -359,31 +342,49 @@ header {
 }
 
 #logo-digital {
-  margin-left: 78px;
+  margin-left: 81px;
 }
 
-#theme {
-  height: 30px;
-  border: none;
-  overflow: hidden;
-  background-color: transparent;
+/* dark mode selector */
+.theme-label {
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  height: 26px;
+  width: 50px;
+  margin-left: 40px;
 }
-#theme::-moz-focus-inner {
-  border: 0;
+
+.theme-checkbox {
+  opacity: 0;
+  position: absolute;
 }
-#theme:focus {
-  outline: none;
+
+.theme-ball {
+  background-color: #fff;
+  position: absolute;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+  transition: transform 0.2s linear;
 }
-#theme option {
-  width: 60px;
-  padding: 3px 0;
-  text-align: center;
-  margin-right: 8px;
-  display: inline-block;
-  cursor: pointer;
-  border: var(--foreground) solid 1px;
-  border-radius: 5px;
-  color: var(--foreground);
+
+.theme-checkbox:checked + .theme-label .theme-ball {
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: #f1c40f;
+}
+
+.fa-sun {
+  color: #f39c12;
 }
 
 @media only screen and (max-width: 800px) {
