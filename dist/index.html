@@ -48,7 +48,10 @@
       sizes="180x180"
       href="apple-touch-icon.png?v=eEvNOAdjm7"
     />
-    <link rel="apple-touch-startup-image" href="icon.png" />
+    <link
+      rel="apple-touch-startup-image"
+      href="apple-touch-icon.png?v=eEvNOAdjm7"
+    />
     <link
       rel="icon"
       type="image/png"
@@ -85,7 +88,7 @@
     />
     <meta name="msapplication-config" content="browserconfig.xml" />
     <meta name="theme-color" content="#000000" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body class="theme-auto">
@@ -138,7 +141,7 @@
             <th class="mobile-hide">Payload</th>
             <th class="mobile-hide">Orbit</th>
             <th class="mobile-hide">Customer</th>
-            <th class="mobile-hide">Target Launch Time (Your)</th>
+            <th class="mobile-hide">Launch Target (Your)</th>
           </tr>
         </thead>
         <tbody id="launch-list"></tbody>
@@ -146,30 +149,26 @@
     </section>
 
     <section class="about">
-      <div class="links-left">
-        <div class="theme-select">
-          <select id="theme" multiple>
-            <option value="auto">Auto</option>
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-          </select>
-        </div>
-      </div>
-      <div class="links-right">
-        <a
-          href="https://github.com/warwickofthegh/whenisthenextspacexlaunch.com"
-          target="_blank"
-          ><span id="logo-award">AWARD</span
-          ><span id="logo-digital">DIGITAL</span></a
-        >
-      </div>
+      <a
+        href="https://github.com/warwickofthegh/whenisthenextspacexlaunch.com"
+        target="_blank"
+        ><span id="logo-award">AWARD</span
+        ><span id="logo-digital">DIGITAL</span></a
+      >
+
+      <input type="checkbox" class="theme-checkbox" id="theme" />
+      <label for="theme" class="theme-label">
+        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
+        <div class="theme-ball"></div>
+      </label>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
-    <script src="storage.js"></script>
-    <script src="ui.js"></script>
-    <script src="http.js"></script>
-    <script src="app.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/http.js"></script>
+    <script src="js/app.js"></script>
 
     <!-- PWA Setup with service worker -->
     <script>
