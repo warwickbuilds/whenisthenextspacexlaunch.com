@@ -11,7 +11,7 @@
 
 #### Technical Functionality
 
-- Data from the unofficial (SpaceX-API - V3)[https://github.com/r-spacex/SpaceX-API]
+- Data from the unofficial [SpaceX-API - V3](https://github.com/r-spacex/SpaceX-API)
 - Theme set from system mode (dark/light)
 - Browser Support: Any Modern Browser (Not Internet Explorer, or Edge v1)
 - PWA Support (Desktop app install, mobile app install, static file cache)
@@ -22,7 +22,7 @@
 - Static Site
 - Vanilla Javascipt (fetch for API calls)
 - Library Addins: Moment(Dates and Times), FontAwesome(Icons), Google Fonts(font styles)
-- Data from public API ((SpaceX-API)[https://github.com/r-spacex/SpaceX-API])
+- Data from public API ([SpaceX-API](https://github.com/r-spacex/SpaceX-API))
 - Cacheing using Service Worker
 - Browser storage using Local Storage
 - Source Control: GitHub
