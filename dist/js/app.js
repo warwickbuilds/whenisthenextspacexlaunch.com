@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   getUpcomingLaunches();
 
   // Get Saved theme from LocalStorage and apply
-  const savedTheme = localStorage.getItem('witnsl-theme');
+  let savedTheme = localStorage.getItem('witnsl-theme');
   if (savedTheme === null) {
     if (
       window.matchMedia &&
