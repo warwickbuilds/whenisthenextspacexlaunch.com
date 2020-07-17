@@ -17,7 +17,7 @@
 - PWA Support (Desktop app install, mobile app install, static file cache)
 - Google Analytics
 
-# Development
+## Development
 
 - Static Site
 - Vanilla Javascipt (fetch for API calls)
@@ -25,7 +25,6 @@
 - Data from public API ((SpaceX-API)[https://github.com/r-spacex/SpaceX-API])
 - Cacheing using Service Worker
 - Browser storage using Local Storage
-
 - Source Control: GitHub
 - Hosting: GitHub Pages with custom domain
 
