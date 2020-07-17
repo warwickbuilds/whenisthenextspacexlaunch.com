@@ -27,6 +27,7 @@
 - Browser storage using Local Storage
 - Source Control: GitHub
 - Hosting: GitHub Pages with custom domain
+- NPM Modules: (Dev) gh-pages(github pages deployment)
 
 ## Releases
 
