@@ -96,8 +96,7 @@ header {
   height: 100%;
   overflow: hidden;
   /* low res before large loads */
-  background: var(--background) url('../img/day_dragon.jpg') no-repeat center
-    center/cover;
+  background: var(--background) url('../img/day_dragon.jpg') no-repeat center center/cover;
 }
 
 .image-container .image {
@@ -294,6 +293,7 @@ header {
   margin: auto;
   text-align: left;
   border-collapse: collapse;
+  font-weight: 400;
 }
 
 .launches-list tr {
@@ -417,6 +417,10 @@ header {
 
   .launch-container {
     width: 95%;
+  }
+
+  .launch-image img {
+    width: 40%;
   }
 
   .launch-countdown {

@@ -5,41 +5,23 @@ class UI {
     const imageDiv = document.querySelector('.launch-image');
 
     // set launch image
-    imageDiv.innerHTML = item.links.mission_patch_small
-      ? `<img src="${item.links.mission_patch_small}">`
-      : '<div class="launch-nopatch"><img src="img/spacex-vector-logo.svg"></div>';
+    imageDiv.innerHTML = item.links.mission_patch_small ? `<img src="${item.links.mission_patch_small}">` : '<div class="launch-nopatch"><img src="img/spacex-vector-logo.svg"></div>';
 
     const div = document.createElement('div');
     div.innerHTML = `
             <p>
-            <span class="details-title">Your Launch Time :</span>&nbsp;&nbsp;${moment(
-              item.launch_date_local
-            ).format('llll')} <br/>
-            <span class="details-title">Site Launch Time :</span>&nbsp;&nbsp;${moment
-              .parseZone(item.launch_date_local)
-              .format('llll')}
+            <span class="details-title">Your Launch Time :</span>&nbsp;&nbsp;${moment(item.launch_date_local).format('llll')} <br/>
+            <span class="details-title">Site Launch Time :</span>&nbsp;&nbsp;${moment.parseZone(item.launch_date_local).format('llll')}
             </p>
             <p>
-            <span class="details-title">Mission Name : </span>&nbsp; ${
-              item.mission_name
-            } <br/ >
-            <span class="details-title">Launch Site : </span>&nbsp; ${
-              item.launch_site.site_name
-            }
+            <span class="details-title">Mission Name : </span>&nbsp; ${item.mission_name} <br/ >
+            <span class="details-title">Launch Site : </span>&nbsp; ${item.launch_site.site_name}
             </p>
             <p>
-            <span class="details-title">Rocket : </span>&nbsp; ${
-              item.rocket.rocket_name
-            } <br/ >
-            <span class="details-title">Payload : </span>&nbsp; ${
-              item.rocket.second_stage.payloads[0].payload_type
-            } <br/ >
-            <span class="details-title">Target Orbit : </span>&nbsp; ${
-              item.rocket.second_stage.payloads[0].orbit
-            } <br/ >
-            <span class="details-title">Customer : </span>&nbsp; ${
-              item.rocket.second_stage.payloads[0].customers[0]
-            }
+            <span class="details-title">Rocket : </span>&nbsp; ${item.rocket.rocket_name} <br/ >
+            <span class="details-title">Payload : </span>&nbsp; ${item.rocket.second_stage.payloads[0].payload_type} <br/ >
+            <span class="details-title">Target Orbit : </span>&nbsp; ${item.rocket.second_stage.payloads[0].orbit} <br/ >
+            <span class="details-title">Customer : </span>&nbsp; ${item.rocket.second_stage.payloads[0].customers[0]}
             </p>
         `;
     // build details html
@@ -81,7 +63,7 @@ class UI {
     details.innerHTML = detailsHtml;
   }
 
-  updateLaunchCountdown(endDate) {
+  updateLaunchCountdown(tentative, endDate) {
     const launch = new Date(endDate);
     const daysSpan = document.querySelector('.countdown-days');
     const hoursSpan = document.querySelector('.countdown-hours');
@@ -114,8 +96,16 @@ class UI {
       }
     }
 
-    updateClock(); // run function once at first to avoid delay
-    var timeinterval = setInterval(updateClock, 1000);
+    if (tentative) {
+      // if launch tbd display text
+      daysSpan.innerHTML = ``;
+      hoursSpan.innerHTML = `Launch`;
+      minsSpan.innerHTML = `Not`;
+      secsSpan.innerHTML = `Set`;
+    } else {
+      updateClock(); // run function once at first to avoid delay
+      var timeinterval = setInterval(updateClock, 1000);
+    }
   }
 
   addUpcomingLaunchToList(launch) {
@@ -125,41 +115,23 @@ class UI {
     // inset cols
 
     // check to patch
-    const patchLink = launch.links.mission_patch_small
-      ? `<img src="${launch.links.mission_patch_small}">`
-      : `<img src="img/nopatch-60x60.png">`;
+    const patchLink = launch.links.mission_patch_small ? `<img src="${launch.links.mission_patch_small}">` : `<img src="img/nopatch-60x60.png">`;
 
     row.innerHTML = `
             <td id="patchtd">${patchLink}</td>
             <td>
                 ${launch.mission_name}
                 <p class=mobile-show><small>
-                ${launch.rocket.rocket_name} | ${
-      launch.rocket.second_stage.payloads[0].payload_type
-    }<br>
-                ${moment(launch.launch_date_local).format(
-                  'MMM Do YY'
-                )} | ${moment(launch.launch_date_local).fromNow()}<br></small>
+                ${launch.rocket.rocket_name} | ${launch.rocket.second_stage.payloads[0].payload_type}<br>
+                ${moment(launch.launch_date_local).format('MMM Do YY')} | ${moment(launch.launch_date_local).fromNow()}<br></small>
                 </p>
             </td>
-            <td class="mobile-hide">${
-              launch.launch_site.site_name !== null
-                ? launch.launch_site.site_name
-                : 'TBD'
-            }</td>
             <td class="mobile-hide">${launch.rocket.rocket_name}</td>
-            <td class="mobile-hide">${
-              launch.rocket.second_stage.payloads[0].payload_type
-            }</td>
-            <td class="mobile-hide">${
-              launch.rocket.second_stage.payloads[0].orbit
-            }</td>
-            <td class="mobile-hide">${
-              launch.rocket.second_stage.payloads[0].customers[0]
-            }</td>
-            <td class="mobile-hide">${moment(launch.launch_date_local).format(
-              'MMM Do YY'
-            )} | ${moment(launch.launch_date_local).fromNow()}</td>
+            <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].payload_type}</td>
+            <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].orbit}</td>
+            <td class="mobile-hide">${launch.rocket.second_stage.payloads[0].customers[0]}</td>
+            <td class="mobile-hide">${launch.launch_site.site_name !== null ? launch.launch_site.site_name : 'TBD'}</td>
+            <td class="mobile-hide">${launch.is_tentative ? moment(launch.launch_date_local).format('MMM YYYY') : moment(launch.launch_date_local).format('LL')}</td>
         `;
     list.append(row);
   }
