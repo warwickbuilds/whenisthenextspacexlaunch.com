@@ -5,16 +5,10 @@ const http = new HTTP();
 
 // DOM Load Event
 document.addEventListener('DOMContentLoaded', () => {
-  // getNextLaunch();
-  getUpcomingLaunches();
-
   // Get Saved theme from LocalStorage and apply
   let savedTheme = localStorage.getItem('witnsl-theme');
   if (savedTheme === null) {
-    if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       // dark system mode
       savedTheme = 'dark';
     } else {
@@ -28,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedTheme === 'light') {
     document.querySelector('.theme-checkbox').checked = true;
   }
+
+  // getNextLaunch();
+  getUpcomingLaunches();
 });
 
 // Chevron click smoothscroll
@@ -38,19 +35,36 @@ document.querySelector('.down-arrow').addEventListener('click', () => {
 // Dark Mode selector
 document.querySelector('.theme-checkbox').addEventListener('change', (e) => {
   if (e.srcElement.checked === true) {
-    localStorage.setItem('witnsl-theme', 'light');
     applyTheme('light');
   } else {
-    localStorage.setItem('witnsl-theme', 'dark');
     applyTheme('dark');
   }
 });
 
 // Get upcoming launches
 function getUpcomingLaunches() {
-  // call http api
+  // API: POST https://api.spacexdata.com/v4/launches/query
+  // DOCS: https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/launches/query.md
   http
-    .get('https://api.spacexdata.com/v3/launches/upcoming')
+    .post('https://api.spacexdata.com/v3/launches/upcoming', {
+      options: {
+        populate: [
+          'cores.core',
+          'cores.landpad',
+          'ships',
+          'crew',
+          'capsules',
+          'payloads',
+          'launchpad',
+          {
+            path: 'rocket',
+            select: {
+              name: 1,
+            },
+          },
+        ],
+      },
+    })
     .then((response) => {
       // Console Log response
       console.log(response);
@@ -59,7 +73,7 @@ function getUpcomingLaunches() {
       ui.paintNextLaunchDetails(response[0]);
 
       // Update next Launch Countdown
-      ui.updateLaunchCountdown(response[0].launch_date_local);
+      ui.updateLaunchCountdown(response[0].is_tentative, response[0].launch_date_local);
 
       // Add each upcoming launch to list
       response.forEach((element) => {
@@ -72,6 +86,7 @@ function getUpcomingLaunches() {
 
 // Apply theme change classes to body on change
 function applyTheme(theme) {
+  localStorage.setItem('witnsl-theme', theme);
   document.body.classList.remove('theme-light', 'theme-dark');
   document.body.classList.add(`theme-${theme}`);
 }

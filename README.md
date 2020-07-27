@@ -15,29 +15,39 @@
 - Theme set from system mode (dark/light)
 - Browser Support: Any Modern Browser (Not Internet Explorer, or Edge v1)
 - PWA Support (Desktop app install, mobile app install, static file cache)
-- Google Analytics
 
 ## Development
 
 - Static Site
 - Vanilla Javascipt (fetch for API calls)
-- Library Addins: Moment(Dates and Times), FontAwesome(Icons), Google Fonts(font styles)
+- Library Addins
+  - Moment(Dates and Times)
+  - FontAwesome(Icons)
+  - Google Fonts(font styles)
 - Data from public API ([SpaceX-API](https://github.com/r-spacex/SpaceX-API))
-- Cacheing using Service Worker
+- Cacheing
+  - Static files using Cache API (Service Worker / PWA)
+  - API Data using IndexedDB
+  - Theme preference using LocalStorage
 - Browser storage using Local Storage
-- Source Control: GitHub
-- Hosting: GitHub Pages with custom domain
 - NPM Modules: (Dev) gh-pages(github pages deployment)
+
+* Source Control: GitHub
+* Hosting: GitHub Pages with custom domain
+* Analytics: Google Analytics
 
 ## Releases
 
-- Planned Featues
+Planned Featues
 
-  - Local storage
-  - Only poll api if updates or per period
-  - PWA Compatibility and Configuration
-  - Use flickr image from response if avilable
-  - Covert to use V4 of API
+#### Version 2.0
+
+- Features
+  - (TODO)Converted to v4 of spaceX API
+  - (IndexedDB)Integrated cache of API data for PWA
+  - Modified display for TBA launch dates (countdown will only show for confirmed launch time)
+  - (Cache API) Cached static files
+  - If available use flickr image from API for background
 
 #### Version 1.6
 
@@ -87,12 +97,10 @@
 #### Version 1.2
 
 - Features
-
   - Sitemap.xml
   - robots.txt
   - Scrollbar styling
   - Noscript notice
-
 - Fixes
   - Keywords
   - Single SpaceX-API call rather than 2 as upcoming also contains next launch
@@ -182,7 +190,6 @@ TinyPNG.com -
 - Hosting: GitHub Pages w/ custom URL
 - Domain Register: Namecheap
 - Analytics: Google Analytics - https://analytics.google.com/analytics
-
 - Optimisation Testing
 
   - Search: Google Search Console, URL Inspection, Index Report - https://search.google.com/search-console
