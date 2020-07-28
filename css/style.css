@@ -144,9 +144,9 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.59);
-  padding: 40px;
+  padding: 60px;
   min-height: 300px;
-  width: 800px;
+  width: 900px;
   color: white;
 }
 
@@ -166,6 +166,14 @@ header {
 
 .launch-stats p {
   margin: 15px 0;
+}
+
+.launch-stats table {
+  margin: 15px 0;
+}
+
+.launch-stats td {
+  padding-right: 15px;
 }
 
 .launch-image {

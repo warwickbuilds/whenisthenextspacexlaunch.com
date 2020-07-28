@@ -46,8 +46,15 @@ function getUpcomingLaunches() {
   // API: POST https://api.spacexdata.com/v4/launches/query
   // DOCS: https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/launches/query.md
   http
-    .post('https://api.spacexdata.com/v3/launches/upcoming', {
+    .post('https://api.spacexdata.com/v4/launches/query', {
+      query: {
+        success: null,
+      },
       options: {
+        sort: {
+          flight_number: 'asc',
+        },
+        limit: 20,
         populate: [
           'cores.core',
           'cores.landpad',
@@ -67,16 +74,16 @@ function getUpcomingLaunches() {
     })
     .then((response) => {
       // Console Log response
-      console.log(response);
+      console.log(response.docs);
 
       // Add next launch details to UI
-      ui.paintNextLaunchDetails(response[0]);
+      ui.paintNextLaunchDetails(response.docs[0]);
 
       // Update next Launch Countdown
-      ui.updateLaunchCountdown(response[0].is_tentative, response[0].launch_date_local);
+      ui.updateLaunchCountdown(response.docs[0].date_precision, response.docs[0].date_local);
 
       // Add each upcoming launch to list
-      response.forEach((element) => {
+      response.docs.forEach((element) => {
         // Add launch to list
         ui.addUpcomingLaunchToList(element);
       });
