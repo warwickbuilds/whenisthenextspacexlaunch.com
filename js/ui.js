@@ -10,8 +10,8 @@ class UI {
     const div = document.createElement('div');
     div.innerHTML = `
             <table>
-            <tr><td><span class="details-title">Your Launch Time</span></td><td>${moment(item.date_local).format('llll')}</td></tr>
-            <tr><td><span class="details-title">Site Launch Time</span></td><td>${moment.parseZone(item.date_local).format('llll')}</td></tr>
+            <tr><td><span class="details-title">Your Launch Time</span></td><td>${moment(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
+            <tr><td><span class="details-title">Site Launch Time</span></td><td>${moment.parseZone(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
             </table>
             <table>
             <tr><td><span class="details-title">Mission Name</span></td><td>${item.name}</td></tr>
