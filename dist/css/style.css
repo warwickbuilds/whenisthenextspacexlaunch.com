@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Michroma&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css');
 
 /* root scope variable */
 :root {
@@ -71,6 +70,10 @@ h1 {
   font-size: 60px;
   line-height: 1.2;
   margin-bottom: 15px;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 header {
@@ -145,7 +148,7 @@ header {
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.59);
   padding: 60px;
-  min-height: 300px;
+  min-height: 600px;
   width: 900px;
   color: white;
 }
@@ -199,7 +202,7 @@ header {
   font-size: 0.9rem;
 }
 
-.launch-details i {
+.launch-details svg {
   font-size: 1.2rem;
   margin-right: 15px;
   margin-top: 10px;
@@ -249,7 +252,8 @@ header {
 
 .countdown-top {
   padding: 5px;
-  font-size: 1.5rem;
+  font-size: 2rem;
+  justify-content: center;
 }
 
 .countdown-bottom {
@@ -425,10 +429,16 @@ header {
 
   .launch-container {
     width: 95%;
+    padding: 20px;
+    height: fit-content;
   }
 
   .launch-image img {
     width: 40%;
+  }
+
+  .launch-nopatch img {
+    width: 100%;
   }
 
   .launch-countdown {

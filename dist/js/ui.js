@@ -1,6 +1,7 @@
 class UI {
   paintNextLaunchDetails(item) {
     const stats = document.querySelector('.launch-stats');
+    const info = document.querySelector('.launch-info');
     const details = document.querySelector('.launch-details');
     const imageDiv = document.querySelector('.launch-image');
 
@@ -10,8 +11,8 @@ class UI {
     const div = document.createElement('div');
     div.innerHTML = `
             <table>
-            <tr><td><span class="details-title">Your Launch Time</span></td><td>${moment(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
-            <tr><td><span class="details-title">Site Launch Time</span></td><td>${moment.parseZone(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
+            <tr><td><span class="details-title">Your Launch Time</span></td><td>${item.date_precision !== 'hour' ? 'NET ' + moment(item.date_local).format('MMM YYYY') : moment(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
+            <tr><td><span class="details-title">Site Launch Time</span></td><td>${item.date_precision !== 'hour' ? 'NET ' + moment(item.date_local).format('MMM YYYY') : moment.parseZone(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
             </table>
             <table>
             <tr><td><span class="details-title">Mission Name</span></td><td>${item.name}</td></tr>
@@ -27,8 +28,8 @@ class UI {
     // build details html
 
     //container.insertBefore(div, countdownDiv);
-
-    stats.appendChild(div);
+    info.innerHTML = '';
+    info.appendChild(div);
 
     let detailsHtml = '';
 
@@ -65,10 +66,12 @@ class UI {
 
   updateLaunchCountdown(date_precision, endDate) {
     const launch = new Date(endDate);
+    const tminusSpan = document.querySelector('.countdown-tminus');
     const daysSpan = document.querySelector('.countdown-days');
     const hoursSpan = document.querySelector('.countdown-hours');
     const minsSpan = document.querySelector('.countdown-minutes');
     const secsSpan = document.querySelector('.countdown-seconds');
+    const countdownDiv = document.querySelector('.countdown-top');
 
     function getTimeRemaining(launch) {
       let t = Date.parse(launch) - Date.parse(new Date());
@@ -87,9 +90,10 @@ class UI {
 
     function updateClock() {
       let t = getTimeRemaining(launch);
-      daysSpan.innerHTML = `${t.days}`;
-      hoursSpan.innerHTML = `${t.hours}`;
-      minsSpan.innerHTML = `${t.minutes}`;
+      tminusSpan.innerHTML = `T-`;
+      daysSpan.innerHTML = `${t.days !== -1 ? t.days : 0}`;
+      hoursSpan.innerHTML = `${t.hours !== -1 ? t.hours : 0}`;
+      minsSpan.innerHTML = `${t.minutes !== -1 ? t.minutes : 0}`;
       secsSpan.innerHTML = `${t.seconds}`;
       if (t.total <= 0) {
         clearInterval(timeinterval);
@@ -98,10 +102,7 @@ class UI {
 
     if (date_precision !== 'hour') {
       // if launch is hour precision only
-      daysSpan.innerHTML = ``;
-      hoursSpan.innerHTML = `Launch`;
-      minsSpan.innerHTML = `Not`;
-      secsSpan.innerHTML = `Set`;
+      countdownDiv.innerHTML = 'Launch Time TBD';
     } else {
       updateClock(); // run function once at first to avoid delay
       var timeinterval = setInterval(updateClock, 1000);
@@ -126,13 +127,14 @@ class UI {
                 ${moment(launch.date_local).format('MMM YYYY')} | ${launch.launchpad.name} (${launch.launchpad.region})<br></small>
                 </p>
             </td>
-            <td class="mobile-hide">${launch.rocket.name}</td>
+            <td class="mobile-hide no-wrap">${launch.rocket.name}</td>
             <td class="mobile-hide">${launch.payloads[0].name} ${launch.payloads[1] ? '<br/>' + launch.payloads[1].name : ''}</td>
             <td class="mobile-hide">${launch.payloads[0].orbit} ${launch.payloads[1] ? '<br/>' + launch.payloads[1].orbit : ''}</td>
             <td class="mobile-hide">${launch.payloads[0].customers[0]} ${launch.payloads[1] ? '<br/>' + launch.payloads[1].customers[0] : ''}</td>
             <td class="mobile-hide">${launch.launchpad.name} (${launch.launchpad.region})</td>
             <td class="mobile-hide">${launch.date_precision === 'month' || launch.date_precision === 'quarter' ? moment(launch.date_local).format('MMM YYYY') : moment(launch.date_local).format('MMM YYYY')}</td>
         `;
+
     list.append(row);
   }
 

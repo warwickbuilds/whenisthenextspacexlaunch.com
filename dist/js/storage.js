@@ -1,44 +1,8 @@
-// class Storage {
-//     constructor() {
-//         this.city;
-//         this.state;
-//         this.defaultCity = 'Adelaide';
-//         this.defaultState = 'South Australia';
-//     }
-
-//     getLocationData() {
-//         if (localStorage.getItem('city') === null) {
-//             this.city = this.defaultCity;
-//         } else {
-//             this.city = localStorage.getItem('city');
-//         }
-
-//         if (localStorage.getItem('state') === null) {
-//             this.state = this.defaultState;
-//         } else {
-//             this.state = localStorage.getItem('state');
-//         }
-
-//         return {
-//             city: this.city,
-//             state: this.state
-//         }
-
-//     }
-
-//     setLocationData(city, state) {
-//         localStorage.setItem('city', city);
-//         localStorage.setItem('state', state);
-//     }
-// }
-
 class Storage {
-
-    getNextLaunchData() {
-
-    }
-
-    getLaunchesData() {
-
-    }
+  initStorage() {
+    const idb = new Dexie('witnsxl');
+    idb.version(1).stores({ launches: '_id' });
+    idb.open().then(console.log('[LOG] indexedDB Open'));
+    return idb;
+  }
 }

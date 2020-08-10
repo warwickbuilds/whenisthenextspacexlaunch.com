@@ -11,10 +11,13 @@
 
 #### Technical Functionality
 
-- Data from the unofficial [SpaceX-API - V3](https://github.com/r-spacex/SpaceX-API)
+- Data from the unofficial [SpaceX-API v4](https://github.com/r-spacex/SpaceX-API)
 - Theme set from system mode (dark/light)
 - Browser Support: Any Modern Browser (Not Internet Explorer, or Edge v1)
 - PWA Support (Desktop app install, mobile app install, static file cache)
+- Data Caching using IndexedDB (min time between refresh 30mins)
+- Image and asset caching using CacheAPI
+- LocalStorage to store settings
 
 ## Development
 
@@ -24,7 +27,7 @@
   - Moment(Dates and Times)
   - FontAwesome(Icons)
   - Google Fonts(font styles)
-- Data from public API ([SpaceX-API](https://github.com/r-spacex/SpaceX-API))
+- Data from public API ([SpaceX-API v4](https://github.com/r-spacex/SpaceX-API))
 - Cacheing
   - Static files using Cache API (Service Worker / PWA)
   - API Data using IndexedDB
@@ -38,16 +41,15 @@
 
 ## Releases
 
-Planned Featues
-
 #### Version 2.0
 
 - Features
-  - (TODO)Converted to v4 of spaceX API
-  - (IndexedDB)Integrated cache of API data for PWA
+  - Converted to v4 of spaceX API
+  - Static file caching using CacheAPI for PWA offine support
+  - Image caching using CacheAPI for performance and offline support
   - Modified display for TBA launch dates (countdown will only show for confirmed launch time)
-  - (Cache API) Cached static files
-  - If available use flickr image from API for background
+  - API Response data cached in IndexedDB with max min refresh time of 30mins
+  - Various interface tweaks, fixes and improvements
 
 #### Version 1.6
 
@@ -122,97 +124,3 @@ Planned Featues
   - SpaceX API Data for upcoming launches
   - Deployment to gh-pages
   - Custom URL https://whenisthenextspacexlaunch.com
-
-## References
-
-- https://www.flickr.com/photos/spacex/
-- https://spacexmissionwatch.com/about
-- https://docs.spacexdata.com/?version=latest#02badaab-e03e-40c8-ab20-3bc76d95d401
-- https://github.com/r-spacex/SpaceX-API/blob/master/docs/clients.md
-- https://api.spacex.land/graphql/
-- https://www.rawpixel.com/image/2229667/official-space-photos
-- https://www.kylegalbraith.com/learn-by-doing/volume/16/the-spacex-api-is-now-released-to-the-public.html
-- https://medium.com/open-graphql/launching-spacex-graphql-api-b3d7029086e0
-- https://api.spacex.njk;bjbiujuhjiland/rest
-- https://docs.spacexdata.com/?version=latest
-- https://www.rocketlaunch.live/premium
-- https://api.spacexdata.com/
-- https://launchlibrary.net/docs/1.4.1/api.html
-- https://github.com/r-spacex/SpaceX-API
-- https://api.spacex.land/graphql/
-- https://dev.to/dcodeyt/add-dark-mode-to-your-websites-with-css-5bh4
-
-## Deploy
-
-#### Git Commands to update master branch
-
-```
-git add .
-git commit -m "updates"
-git push -u origin master
-```
-
-#### Push assets from /dist to gh-pages branch
-
-- gh-pages - https://www.npmjs.com/package/gh-pages
-  npm package installs a command line utility, which published everything in dist folder to gh-pages branch
-
-```
-npm run deploy
-```
-
-#### Design & Development
-
-Full Page Image inspiration from Brad Traversy: https://www.youtube.com/watch?v=Gx_7GQtSdpc
-Ken Burns Effect - https://www.youtube.com/watch?v=XiEiVZFUfa8
-Flickr - SpaceX https://www.flickr.com/photos/spacex
-Page Scrolling - https://www.youtube.com/watch?v=oUSvlrDTLi4
-Easing - http://gizma.com/easing/
-Font-Awesome - https://cdnjs.com/libraries/font-awesome
-Google-Font -
-https://htmlhead.dev/
-Sitemaps - https://ahrefs.com/blog/how-to-create-a-sitemap/
-robots.txt - https://moz.com/learn/seo/robotstxt
-noscript - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/noscript
-Favicon Generator - https://realfavicongenerator.net/
-Browser Configuration Schema - https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/dn320426(v=vs.85)
-Apple Web Applications - https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html
-Google Browser Configuration - https://developers.google.com/web/fundamentals/design-and-ux/browser-customization
-PWA Setup - https://codelabs.developers.google.com/codelabs/your-first-pwapp/#5
-https://medium.com/dev-channel/learn-how-to-build-a-pwa-in-under-5-minutes-c860ad406ed
-Dark MOde - https://dev.to/dcodeyt/add-dark-mode-to-your-websites-with-css-5bh4
-
-Optimisation Tools
-TinyPNG.com -
-
-#### Hosting & Deployment
-
-- Hosting: GitHub Pages w/ custom URL
-- Domain Register: Namecheap
-- Analytics: Google Analytics - https://analytics.google.com/analytics
-- Optimisation Testing
-
-  - Search: Google Search Console, URL Inspection, Index Report - https://search.google.com/search-console
-  - Google URL Inspection Tool - https://support.google.com/webmasters
-  - Google Page Speed Insights - https://developers.google.com/speed
-  - Google Lighthouse (Web page quality tester)- https://developers.google.com/web/tools/lighthouse/
-  - Mobile Friendly Test - https://search.google.com/test/mobile-friendly
-  - Web Page Test - https://www.webpagetest.org/
-  - Pingdom Website Speed Test - https://tools.pingdom.com/
-  - SS Labs
-  - Site checker
-  - Facebook Sharing Debugger - https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fwhenisthenextspacexlaunch.com%2F
-
-- Promotion
-
-  - SpaceX Data App List -
-  - Reddit /r/spacexlounge -
-  - Reddit /r/webdev -
-  - Youtube, Instagram and Facebook Comments
-  - Whirlpool Thread - https://forums.whirlpool.net.au/thread/97m0xpm9
-
-- Testing
-
-  - Lighthouse
-  - SS Labs
-  - Site checker
