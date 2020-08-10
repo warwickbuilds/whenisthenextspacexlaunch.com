@@ -31,20 +31,20 @@
     <meta name="twitter:title" content="When is the next SpaceX Launch" />
     <meta name="robots" content="index,follow" />
     <meta name="googlebot" content="index,follow" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=eEvNOAdjm7" />
-    <link rel="apple-touch-startup-image" href="apple-touch-icon.png?v=eEvNOAdjm7" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png?v=eEvNOAdjm7" />
-    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png?v=eEvNOAdjm7" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png?v=eEvNOAdjm7" />
-    <link rel="manifest" href="manifest.json?v=eEvNOAdjm7" />
-    <link rel="mask-icon" href="safari-pinned-tab.svg?v=eEvNOAdjm7" color="#5bbad5" />
-    <link rel="shortcut icon" href="favicon.ico?v=eEvNOAdjm7" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="apple-touch-startup-image" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
+    <link rel="shortcut icon" href="favicon.ico" />
     <meta name="apple-mobile-web-app-title" content="X Launch" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="when is the next spacex launch" />
     <meta name="msapplication-TileColor" content="#000000" />
-    <meta name="msapplication-TileImage" content="mstile-144x144.png?v=eEvNOAdjm7" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
     <meta name="msapplication-config" content="browserconfig.xml" />
     <meta name="theme-color" content="#000000" />
     <link rel="stylesheet" href="css/style.css" />
@@ -64,7 +64,7 @@
           <div class="launch-stats">
             <div class="launch-countdown">
               <div class="countdown-top">
-                <div class="countdown-tminus">T-</div>
+                <div class="countdown-tminus">&nbsp;</div>
                 <div class="countdown-days"><span class="days"></span></div>
                 <div class="countdown-hours"><span class="hours"></span></div>
                 <div class="countdown-minutes"></div>
@@ -78,6 +78,7 @@
                 <div>SECS</div>
               </div>
             </div>
+            <div class="launch-info"></div>
           </div>
           <div class="launch-image"></div>
         </div>
@@ -97,7 +98,7 @@
             <th class="mobile-hide">Orbit</th>
             <th class="mobile-hide">Customer</th>
             <th class="mobile-hide">Launch Site</th>
-            <th class="mobile-hide">Launch Target</th>
+            <th class="mobile-hide">Launch (NET)</th>
           </tr>
         </thead>
         <tbody id="launch-list"></tbody>
@@ -115,7 +116,11 @@
       </label>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+    <script src="js/lib/moment.min.js"></script>
+    <script src="js/lib/fa-all.js"></script>
+    <script src="js/lib/indexeddb.shim.min.js"></script>
+    <script src="js/lib/dexie.min.js"></script>
+
     <script src="js/storage.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/http.js"></script>
