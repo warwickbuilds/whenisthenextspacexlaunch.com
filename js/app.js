@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // getNextLaunch();
   const lastAPIGet = new Date(localStorage.getItem('witnsl-lastapiget'));
-  const dateComp = new Date(new Date().getTime() - 1 * 60000); // minus 30 minute
+  const dateComp = new Date(new Date().getTime() - 30 * 60000); // minus 30 minute
 
   if (lastAPIGet < dateComp) {
     getFreshData();
