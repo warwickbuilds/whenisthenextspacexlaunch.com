@@ -28,7 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // getNextLaunch();
-  getUpcomingLaunches();
+  const lastAPIGet = new Date(localStorage.getItem('witnsl-lastapiget'));
+  const dateComp = new Date(new Date().getTime() - 1 * 60000); // minus 30 minute
+
+  if (lastAPIGet < dateComp) {
+    getFreshData();
+  } else{
+    getUpcomingLaunches();
+  }
+
 });
 
 // Chevron click smoothscroll
@@ -47,6 +55,7 @@ document.querySelector('.theme-checkbox').addEventListener('change', (e) => {
 
 // Get upcoming launches
 function getUpcomingLaunches() {
+  console.log('cache data used');
   // check indexeddb for data
   idb.launches.toArray().then((data) => {
     if (data[0]) {
@@ -61,24 +70,19 @@ function getUpcomingLaunches() {
 
       // Add each upcoming launch to list
       document.getElementById('launch-list').innerHTML = '';
+
       response.forEach((element) => {
         // Add launch to list
         ui.addUpcomingLaunchToList(element);
       });
 
-      //console.log(response);
-      console.log('cache data used');
-
-      // Only Get new Data if checked over 1 minute ago
-      const lastAPIGet = new Date(localStorage.getItem('witnsl-lastapiget'));
-      const dateComp = new Date(new Date().getTime() - 30 * 60000); // minus 30 minute
-      if (lastAPIGet < dateComp) {
-        getFreshData();
-      }
     } else {
       // No Local Data
       getFreshData();
     }
+  }
+
+  )};
 
     function getFreshData() {
       // API: POST https://api.spacexdata.com/v4/launches/query
@@ -142,8 +146,7 @@ function getUpcomingLaunches() {
       //Log time to local storage
       localStorage.setItem('witnsl-lastapiget', new Date());
     }
-  });
-}
+
 
 // Apply theme change classes to body on change
 function applyTheme(theme) {
