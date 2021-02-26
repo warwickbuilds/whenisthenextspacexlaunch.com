@@ -37,9 +37,17 @@
 
 * Source Control: GitHub
 * Hosting: GitHub Pages with custom domain
-* Analytics: Google Analytics
+* Analytics: Google Analytics, Microsoft Clarity
 
 ## Releases
+
+#### Version 2.1
+
+- Features
+  - Added Microsoft Clarity Snippet
+
+- Fixes
+  - Fixed New Year Date Comparison for Cache Refresh
 
 #### Version 2.0
 
