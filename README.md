@@ -41,9 +41,15 @@
 
 ## Releases
 
+#### Version 2.2
+
+- Fixes
+  - Implement method to force PWA Cache update
+
 #### Version 2.1
 
 - Features
+
   - Added Microsoft Clarity Snippet
 
 - Fixes

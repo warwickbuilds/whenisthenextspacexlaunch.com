@@ -2,8 +2,8 @@
 var doCache = true;
 
 // Name our cache
-var contentAssetCache = 'witnsl-content-assets';
-var contentImgsCache = 'witnsl-content-imgs';
+var contentAssetCache = 'witnsl-content-assets-20210303';
+var contentImgsCache = 'witnsl-content-imgs-20210303';
 var allCaches = [contentImgsCache, contentAssetCache];
 
 // self.addEventListener('activate', (event) => {
@@ -64,6 +64,12 @@ self.addEventListener('install', function (event) {
           });
       })
     );
+  }
+});
+
+self.addEventListener('message', function (event) {
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting();
   }
 });
 
