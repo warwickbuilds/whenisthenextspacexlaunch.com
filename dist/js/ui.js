@@ -11,8 +11,8 @@ class UI {
     const div = document.createElement('div');
     div.innerHTML = `
             <table>
-            <tr><td><span class="details-title">Your Launch Time</span></td><td>${item.date_precision !== 'hour' ? 'NET ' + moment(item.date_local).format('MMM YYYY') : moment(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
-            <tr><td><span class="details-title">Site Launch Time</span></td><td>${item.date_precision !== 'hour' ? 'NET ' + moment(item.date_local).format('MMM YYYY') : moment.parseZone(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
+            <tr><td><span class="details-title">Your Launch Time</span></td><td>${(item.date_precision !== 'hour' ? 'NET ' : '') + this.formatDate(item.date_local, item.date_precision, false)}</td></tr>
+            <tr><td><span class="details-title">Site Launch Time</span></td><td>${(item.date_precision !== 'hour' ? 'NET ' : '') + this.formatDate(item.date_local, item.date_precision, true)}</td></tr>
             </table>
             <table>
             <tr><td><span class="details-title">Mission Name</span></td><td>${item.name}</td></tr>
@@ -109,6 +109,26 @@ class UI {
     }
   }
 
+  formatDate(date_launchsite, precision, useBrowserZone) {
+    const formats = {
+        'year': 'YYYY',
+        'quarter': '\\QQ YYYY',
+        'month': 'MMMM YYYY',
+        'day': 'ddd Do MMM',
+        'hour': 'ddd Do MMM, h:mm a',
+    };
+
+    // we have to use the UTC time for all precisions other than "hour"
+    // also, useBrowserZone only makes sense for precision "hour"
+    const m = (precision == 'hour' ? (useBrowserZone ? moment : moment.parseZone) : moment.utc);
+
+    if (precision == "half") {
+        return (m(date_launchsite).format('M') > 6 ? "2nd" : "1st") + " half of " + m(date_launchsite).format('YYYY');
+    } else {
+        return m(date_launchsite).format(formats[precision]);
+    }
+  }
+
   addUpcomingLaunchToList(launch) {
     const list = document.getElementById('launch-list');
     // create tr element
@@ -132,7 +152,7 @@ class UI {
             <td class="mobile-hide">${launch.payloads[0].orbit} ${launch.payloads[1] ? '<br/>' + launch.payloads[1].orbit : ''}</td>
             <td class="mobile-hide">${launch.payloads[0].customers[0]} ${launch.payloads[1] ? '<br/>' + launch.payloads[1].customers[0] : ''}</td>
             <td class="mobile-hide">${launch.launchpad.name} (${launch.launchpad.region})</td>
-            <td class="mobile-hide">${launch.date_precision === 'month' || launch.date_precision === 'quarter' ? moment(launch.date_local).format('MMM YYYY') : moment(launch.date_local).format('MMM YYYY')}</td>
+            <td class="mobile-hide">${this.formatDate(launch.date_local, launch.date_precision, false)}</td>
         `;
 
     list.append(row);
