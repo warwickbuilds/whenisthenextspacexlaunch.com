@@ -41,6 +41,14 @@
 
 ## Releases
 
+#### Version 2.1
+
+- Fixes
+  - API Missing payload data handle
+  - Imgur image loading link 403 error handle
+  - Minor verioning updates
+  - Dependencie updates
+
 #### Version 2.2
 
 - Fixes

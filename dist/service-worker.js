@@ -2,8 +2,8 @@
 var doCache = true;
 
 // Name our cache
-var contentAssetCache = 'witnsl-content-assets-20210303';
-var contentImgsCache = 'witnsl-content-imgs-20210303';
+var contentAssetCache = 'witnsl-content-assets-20220810';
+var contentImgsCache = 'witnsl-content-imgs-20220810';
 var allCaches = [contentImgsCache, contentAssetCache];
 
 // self.addEventListener('activate', (event) => {

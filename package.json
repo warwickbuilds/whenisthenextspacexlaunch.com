@@ -10,6 +10,6 @@
     "homepage": "https://github.com/warwickofthegh/whenisthenextspacexlaunch.com",
     "license": "ISC",
     "dependencies": {
-        "gh-pages": "^1.2.0"
+        "gh-pages": "^4.0.0"
     }
 }

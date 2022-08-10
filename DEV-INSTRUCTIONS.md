@@ -15,6 +15,10 @@ npm -v
 
 ## Build and Deploy
 
+#### NPM Packages Updats
+
+npm install
+
 #### Force Service Worker Cache Update
 
 Update change names to date published

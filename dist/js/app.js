@@ -33,10 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (lastAPIGet < dateComp) {
     getFreshData();
-  } else{
+  } else {
     getUpcomingLaunches();
   }
-
 });
 
 // Chevron click smoothscroll
@@ -63,6 +62,7 @@ function getUpcomingLaunches() {
       let response = data[0].data;
 
       // Add next launch details to UI
+      //console.log(response[0]);
       ui.paintNextLaunchDetails(response[0]);
 
       // Update next Launch Countdown
@@ -75,78 +75,75 @@ function getUpcomingLaunches() {
         // Add launch to list
         ui.addUpcomingLaunchToList(element);
       });
-
     } else {
       // No Local Data
       getFreshData();
     }
-  }
+  });
+}
 
-  )};
-
-    function getFreshData() {
-      // API: POST https://api.spacexdata.com/v4/launches/query
-      // DOCS: https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/launches/query.md
-      http
-        .post('https://api.spacexdata.com/v4/launches/query', {
-          query: {
-            success: null,
-          },
-          options: {
-            sort: {
-              flight_number: 'asc',
+function getFreshData() {
+  // API: POST https://api.spacexdata.com/v4/launches/query
+  // DOCS: https://github.com/r-spacex/SpaceX-API/blob/master/docs/v4/launches/query.md
+  http
+    .post('https://api.spacexdata.com/v4/launches/query', {
+      query: {
+        success: null,
+      },
+      options: {
+        sort: {
+          flight_number: 'asc',
+        },
+        limit: 20,
+        populate: [
+          'cores.core',
+          'cores.landpad',
+          'ships',
+          'crew',
+          'capsules',
+          'payloads',
+          'launchpad',
+          {
+            path: 'rocket',
+            select: {
+              name: 1,
             },
-            limit: 20,
-            populate: [
-              'cores.core',
-              'cores.landpad',
-              'ships',
-              'crew',
-              'capsules',
-              'payloads',
-              'launchpad',
-              {
-                path: 'rocket',
-                select: {
-                  name: 1,
-                },
-              },
-            ],
           },
-        })
-        .then((response) => {
-          // Update IndexedDB
-          idb.launches.put({ data: response.docs, _id: 'launches' });
+        ],
+      },
+    })
+    .then((response) => {
+      // Update IndexedDB
+      idb.launches.put({ data: response.docs, _id: 'launches' });
 
-          idb.launches.toArray().then((data) => {
-            //console.log(data[0]);
-            //data.forEach((launch) => console.log(launch));
-          });
+      idb.launches.toArray().then((data) => {
+        //console.log(data[0]);
+        data.forEach((launch) => console.log(launch));
+      });
 
-          // Console Log response
-          //console.log(response.docs);
+      // Console Log response
+      //console.log(response.docs);
 
-          // Add next launch details to UI
-          ui.paintNextLaunchDetails(response.docs[0]);
+      // Add next launch details to UI
+      ui.paintNextLaunchDetails(response.docs[0]);
 
-          // Update next Launch Countdown
-          ui.updateLaunchCountdown(response.docs[0].date_precision, response.docs[0].date_local);
+      // Update next Launch Countdown
+      ui.updateLaunchCountdown(response.docs[0].date_precision, response.docs[0].date_local);
 
-          // Add each upcoming launch to list
-          document.getElementById('launch-list').innerHTML = '';
-          response.docs.forEach((element) => {
-            // Add launch to list
-            ui.addUpcomingLaunchToList(element);
-          });
+      // Add each upcoming launch to list
+      document.getElementById('launch-list').innerHTML = '';
+      response.docs.forEach((element) => {
+        // Add launch to list
+        ui.addUpcomingLaunchToList(element);
+      });
 
-          console.log('cache updated');
-        })
-        .catch((err) => console.log(err));
+      console.log('cache updated');
+    })
+    .catch((err) => console.log(err));
 
-      //Log time to local storage
-      localStorage.setItem('witnsl-lastapiget', new Date());
-    }
-
+  //Log time to local storage
+  localStorage.setItem('witnsl-lastapiget', new Date());
+}
 
 // Apply theme change classes to body on change
 function applyTheme(theme) {
