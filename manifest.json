@@ -1,19 +1,20 @@
-  {
-      "name": "When is the next SpaceX launch",
-      "short_name": "X Launch",
-      "icons": [{
-              "src": "android-chrome-192x192.png?v=eEvNOAdjm7",
-              "sizes": "192x192",
-              "type": "image/png"
-          },
-          {
-              "src": "android-chrome-512x512.png?v=eEvNOAdjm7",
-              "sizes": "512x512",
-              "type": "image/png"
-          }
-      ],
-      "theme_color": "#000000",
-      "background_color": "#000000",
-      "start_url": "index.html",
-      "display": "standalone"
-  }
+{
+  "name": "When is the next SpaceX launch",
+  "short_name": "Next SpaceX",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png?v=eEvNOAdjm7",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png?v=eEvNOAdjm7",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "start_url": "index.html",
+  "display": "standalone"
+}

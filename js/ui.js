@@ -6,11 +6,10 @@ class UI {
     const imageDiv = document.querySelector('.launch-image');
 
     // set launch image
-    imageDiv.innerHTML = item.links.patch.small ? `<img src="${item.links.patch.small}">` : '<div class="launch-nopatch"><img src="img/spacex-vector-logo.svg"></div>';
+    imageDiv.innerHTML = item.links.patch.small ? `<img src="${item.links.patch.small.replace('https://imgur.com/BrW201S.png', 'img/BrW201S.png')}">` : '<div class="launch-nopatch"><img src="img/spacex-vector-logo.svg"></div>';
 
     const div = document.createElement('div');
-    div.innerHTML = `
-            <table>
+    div.innerHTML = `<table> 
             <tr><td><span class="details-title">Your Launch Time</span></td><td>${item.date_precision !== 'hour' ? 'NET ' + moment(item.date_local).format('MMM YYYY') : moment(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
             <tr><td><span class="details-title">Site Launch Time</span></td><td>${item.date_precision !== 'hour' ? 'NET ' + moment(item.date_local).format('MMM YYYY') : moment.parseZone(item.date_local).format('ddd Do MMM, h:mm a')}</td></tr>
             </table>
@@ -20,13 +19,11 @@ class UI {
             </table>
             <table>
             <tr><td><span class="details-title">Rocket</span></td><td>${item.rocket.name}</td></tr>
-            <tr><td><span class="details-title">Payload</span></td><td>${item.payloads[0].name} ${item.payloads[1] ? ' / ' + item.payloads[1].name : ''}</td></tr>
-            <tr><td><span class="details-title">Target Orbit</span></td><td>${item.payloads[0].orbit} ${item.payloads[1] ? ' / ' + item.payloads[1].orbit : ''}</td></tr>
-            <tr><td><span class="details-title">Customer</span></td><td>${item.payloads[0].customers[0]} ${item.payloads[1] ? ' / ' + item.payloads[1].customers[0] : ''}</td></tr>
-            </table>
-        `;
+            <tr><td><span class="details-title">Payload</span></td><td>${!item.payloads[0] ? '' : item.payloads[0].name} ${!item.payloads[1] ? '' : item.payloads[1] ? (' / ' + !item.payloads[1] ? '' : item.payloads[1].name) : ''}</td></tr>
+            <tr><td><span class="details-title">Target Orbit</span></td><td>${!item.payloads[0] ? '' : item.payloads[0].orbit} ${!item.payloads[1] ? '' : item.payloads[1] ? (' / ' + !item.payloads[1] ? '' : item.payloads[1].orbit) : ''}</td></tr>
+            <tr><td><span class="details-title">Customer</span></td><td>${!item.payloads[0] ? '' : item.payloads[0].customers[0]} ${!item.payloads[1] ? '' : item.payloads[1] ? (' / ' + !item.payloads[1] ? '' : item.payloads[1].customers[0]) : ''}</td></tr>
+            </table>`;
     // build details html
-
     //container.insertBefore(div, countdownDiv);
     info.innerHTML = '';
     info.appendChild(div);
@@ -60,7 +57,6 @@ class UI {
     detailsHtml += `<a href="https://www.spacex.com/" target="_blank"><img class="spacex" src="img/spacex-logo-trans.png"></a>`;
 
     detailsHtml += `</p>`;
-
     details.innerHTML = detailsHtml;
   }
 
@@ -116,21 +112,21 @@ class UI {
     // inset cols
 
     // check to patch
-    const patchLink = launch.links.patch.small ? `<img src="${launch.links.patch.small}">` : `<img src="img/nopatch-60x60.png">`;
+    const patchLink = launch.links.patch.small ? `<img src="${launch.links.patch.small.replace('https://imgur.com/BrW201S.png', 'img/BrW201S.png')}">` : `<img src="img/nopatch-60x60.png">`;
 
     row.innerHTML = `
             <td id="patchtd">${patchLink}</td>
             <td>
                 ${launch.name}
                 <p class=mobile-show><small>
-                ${launch.rocket.name} | ${launch.payloads[0].name} ${launch.payloads[1] ? ' / ' + launch.payloads[1].name : ''}<br>
+                ${launch.rocket.name} | ${!launch.payloads[0] ? '' : launch.payloads[0].name} ${!launch.payloads[0] ? '' : launch.payloads[1] ? (' / ' + !launch.payloads[0] ? '' : launch.payloads[1].name) : ''}<br>
                 ${moment(launch.date_local).format('MMM YYYY')} | ${launch.launchpad.name} (${launch.launchpad.region})<br></small>
                 </p>
             </td>
             <td class="mobile-hide no-wrap">${launch.rocket.name}</td>
-            <td class="mobile-hide">${launch.payloads[0].name} ${launch.payloads[1] ? '<br/>' + launch.payloads[1].name : ''}</td>
-            <td class="mobile-hide">${launch.payloads[0].orbit} ${launch.payloads[1] ? '<br/>' + launch.payloads[1].orbit : ''}</td>
-            <td class="mobile-hide">${launch.payloads[0].customers[0]} ${launch.payloads[1] ? '<br/>' + launch.payloads[1].customers[0] : ''}</td>
+            <td class="mobile-hide">${!launch.payloads[0] ? '' : launch.payloads[0].name} ${!launch.payloads[0] ? '' : launch.payloads[1] ? ('<br/>' + !launch.payloads[0] ? '' : launch.payloads[1].name) : ''}</td>
+            <td class="mobile-hide">${!launch.payloads[0] ? '' : launch.payloads[0].orbit} ${!launch.payloads[0] ? '' : launch.payloads[1] ? ('<br/>' + !launch.payloads[0] ? '' : launch.payloads[1].orbit) : ''}</td>
+            <td class="mobile-hide">${!launch.payloads[0] ? '' : launch.payloads[0].customers[0]} ${!launch.payloads[0] ? '' : launch.payloads[1] ? ('<br/>' + !launch.payloads[0] ? '' : launch.payloads[1].customers[0]) : ''}</td>
             <td class="mobile-hide">${launch.launchpad.name} (${launch.launchpad.region})</td>
             <td class="mobile-hide">${launch.date_precision === 'month' || launch.date_precision === 'quarter' ? moment(launch.date_local).format('MMM YYYY') : moment(launch.date_local).format('MMM YYYY')}</td>
         `;
